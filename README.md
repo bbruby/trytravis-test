@@ -57,6 +57,7 @@ someinternalhost_IP = 10.132.0.5
 
 
 ***Домашнее задание №6***
+***Деплой тестового приложения***
 
 Для деплоя тестового приложения было создано три скрипта:
 
@@ -64,9 +65,9 @@ someinternalhost_IP = 10.132.0.5
 2. Установка MongoDB, скрипт install_mongodb.sh
 3. Установка и запуск приложения, скрипт deploy.sh
 
-Для выполнения дополнительного задания был создан скрипт startup_script.sh, который разворачивает приложение при создании инстанса.
+Для выполнения дополнительного задания был создан скрипт startup_script.sh, который разворачивает приложение при создании инстанса и включает функционал всех трех вышеприведенных скриптов.
 Скрипт был добавлен в бакет, для публичного доступа к нему из интернет по URL.
-Содержание скрипта startup_script.sh следующее:
+Для выполнения задания по разворачиванию приложения при создании ВМ использована следующая команда:
 
 ```
 gcloud compute instances create reddit-app --scopes storage-ro --metadata startup-script-url=https://storage.googleapis.com/eugbbr-bucket/startup_script.sh --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure
