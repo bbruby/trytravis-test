@@ -85,3 +85,26 @@ gcloud compute firewall-rules create default-puma-server --allow=tcp:9292 --dire
 testapp_IP = 35.241.159.54
 testapp_port = 9292
 ```
+
+***Домашнее задание №7 Сборка образов VM при помощи Packer***
+
+В ходе выполнения домашнего задания был создан Packer шаблон ubuntu16.json, собран образ ВМ с установленным Ruby и MongoDB.
+
+Были параметризованы в Packer шаблоне и записаны в файл variables.json:
+
+ - ID проекта
+ - source_image_family
+ - machine_type
+ - zone
+ - source_image
+
+Были добавлены опции builder:
+
+ - Описание образа
+ - Размер и тип диска
+ - Название сети
+ - Теги
+
+Для выполнения дополнительного задания по созданию образа со всеми зависимостями были созданы: шаблон immutable.json, файл переменных immutable-variables.json, скрипт запсука службы приложения start_puma.sh и сам файл службы puma-service.
+
+Для выполнения дополнительного задания по созданию ВМ из образа с полностью готовым приложением, с помощью gcloud был создан скрипт create-reddit-vm.sh
