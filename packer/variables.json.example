@@ -1,0 +1,7 @@
+{
+  "project_id":"infra-id",
+  "source_image_family":"ubuntu-family",
+  "source_image":"ubuntu-image",
+  "machine_type":"n1-highcpu-96",
+  "zone":"europe-west5-a"
+}

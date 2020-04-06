@@ -1,0 +1,7 @@
+{
+  "project_id":"infra-id",
+  "source_image_family":"reddit-base",
+  "source_image":"reddit-base-image",
+  "machine_type":"n1-ultra96",
+  "zone":"europe-west5-b"
+}
