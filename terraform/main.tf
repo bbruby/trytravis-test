@@ -53,16 +53,17 @@ resource "google_compute_instance" "app" {
 }
 
 resource "google_compute_firewall" "firewall_puma" {
-  name = "allow-puma-default"
-  # Название сети, в которой действует правило
+  name    = "allow-puma-default"
   network = "default"
-  # Какой доступ разрешить
   allow {
     protocol = "tcp"
     ports    = ["9292"]
   }
-  # Каким адресам разрешаем доступ
   source_ranges = ["0.0.0.0/0"]
-  # Правило применимо для инстансов с перечисленными тэгами
-  target_tags = ["reddit-app"]
+  target_tags   = ["reddit-app"]
+}
+
+resource "google_compute_project_metadata_item" "default" {
+  key   = "ssh-keys"
+  value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
 }
