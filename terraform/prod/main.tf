@@ -1,18 +1,33 @@
 terraform {
-  # Версия terraform
   required_version = "~> 0.12.0"
 }
 
 provider "google" {
-  # Версия провайдера
   version = "~> 2.5.0"
-
-  # ID проекта
   project = var.project
-
-  region = var.region
+  region  = var.region
 }
 
+module "app" {
+  source          = "../modules/app"
+  public_key_path = var.public_key_path
+  zone            = var.zone
+  app_disk_image  = var.app_disk_image
+}
+
+module "db" {
+  source          = "../modules/db"
+  public_key_path = var.public_key_path
+  zone            = var.zone
+  db_disk_image   = var.db_disk_image
+}
+
+module "vpc" {
+  source        = "../modules/vpc"
+  source_ranges = ["94.198.132.116/32"]
+}
+
+/*
 resource "google_compute_instance" "app" {
   count        = var.instance_count
   name         = "reddit-app-${count.index}"
@@ -27,7 +42,9 @@ resource "google_compute_instance" "app" {
 
   network_interface {
     network = "default"
-    access_config {}
+    access_config {
+      nat_ip = google_compute_address.app_ip.address
+    }
   }
 
   metadata = {
@@ -64,7 +81,24 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags   = ["reddit-app"]
 }
 
+resource "google_compute_firewall" "firewall_ssh" {
+  name    = "default-allow-ssh"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+}
+
 resource "google_compute_project_metadata_item" "default" {
   key   = "ssh-keys"
   value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
 }
+
+resource "google_compute_address" "app_ip" {
+  name = "reddit-app-ip"
+}
+ */
