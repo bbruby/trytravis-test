@@ -5,9 +5,9 @@ provider "google" {
 }
 
 module "storage-bucket" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.3.0"
-  name    = "storage-bucket-eugenebbr"
+  source   = "SweetOps/storage-bucket/google"
+  version  = "0.3.0"
+  name     = "storage-bucket-eugenebbr"
   location = var.location
 }
 
