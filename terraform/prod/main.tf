@@ -13,6 +13,7 @@ module "app" {
   public_key_path = var.public_key_path
   zone            = var.zone
   app_disk_image  = var.app_disk_image
+  db_ip           = module.db.db_ip
 }
 
 module "db" {
@@ -23,6 +24,7 @@ module "db" {
 }
 
 module "vpc" {
-  source        = "../modules/vpc"
-  source_ranges = ["94.198.132.116/32"]
+  source = "../modules/vpc"
+  # source_ranges = ["78.144.22.36/32"]
+  source_ranges = ["0.0.0.0/0"]
 }

@@ -6,11 +6,11 @@
   versioning {
     enabled = true
   }
-}
- */
+} */
+
 terraform {
   backend "gcs" {
     bucket = "storage-bucket-eugenebbr-stg"
-    prefix = "terraform/state"
+    prefix = "terraform/state/stg"
   }
 }
