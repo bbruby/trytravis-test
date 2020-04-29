@@ -1,7 +1,13 @@
+#packer
 packer/variables.json
 packer/files/immutable-variables.json
+
+#terraform
 *.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
 *.tfvars
 .terraform/
+
+#ansible
+*.retry
