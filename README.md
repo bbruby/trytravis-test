@@ -143,3 +143,10 @@ testapp_port = 9292
 ```
 ansible app -m command -a 'ruby -v'
 ```
+
+***Домашнее задание №11 Деплой и управление конфигурацией с Ansible***
+
+В ходе выполнения домашнего задания были созданы плейбуки reddit_app.yml и reddit_db.yml для деплоя нашего приложения, настройки БД.
+Плейбуки были разделены на несколько отдельных - app.yml, db.yml и deploy.yml.
+Добавлен и описан dynamic inventory, используя gcp_compute.
+Были пересозданы образы ВМ reddit-db-base и reddit-app-base с помощью плейбуков packer_app.yml и packer_db.yml, а также проверена работоспособность всего окружения.
