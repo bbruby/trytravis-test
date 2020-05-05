@@ -1,0 +1,15 @@
+plugin: gcp_compute
+projects:
+  - infra-271006
+zones:
+  - "europe-west1-b"
+auth_kind: serviceaccount
+service_account_file: /home/bender/Documents/gcp/infra-271006-994b5d645d64.json
+groups:
+  app: "'reddit-app' in name"
+  db: "'reddit-db' in name"
+hostnames:
+  - name
+filters: []
+compose:
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP

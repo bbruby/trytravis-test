@@ -11,3 +11,4 @@ packer/files/immutable-variables.json
 
 #ansible
 *.retry
+jdauphant.nginx
