@@ -4,7 +4,6 @@ variable public_key_path {
 variable private_key_path {
   default     = "~/.ssh/appuser"
 }
-
 variable zone {
   description = "Zone"
   default     = "europe-west1-b"
@@ -19,4 +18,15 @@ variable "machine_type" {
 }
 variable "db_ip" {
   description = "MongoDB IP"
+}
+variable "env" {
+  description = "Environment"
+}
+variable "env_network" {
+  description = "Environment network"
+  default = "default"
+}
+variable "env_label" {
+  description = "Instance environment label"
+  default = "stage"
 }

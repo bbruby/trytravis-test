@@ -10,6 +10,7 @@ groups:
   db: "'reddit-db' in name"
 hostnames:
   - name
-filters: []
+filters:
+  - labels.environment = "stage"
 compose:
   ansible_host: networkInterfaces[0].accessConfigs[0].natIP
